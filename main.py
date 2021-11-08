@@ -4,6 +4,7 @@ import math
 from interface import Interface
 from pacman import Pacman
 from field import Field
+from menu import Menu
 
 WIDTH = 560
 HEIGHT = 480
@@ -24,7 +25,8 @@ class GameState:
         self.current_frame += 1
 
 game = GameState()
-game.game_mode = "game"
+#game.game_mode = "game"
+menu = Menu()
 interface = Interface()
 tile_size = 30
 field = Field()
@@ -59,8 +61,9 @@ while not game.game_over:
         field.draw(screen, 30, 30, tile_size)
         interface.draw(screen, WIDTH, HEIGHT, score = game.current_frame)
         pacman.draw(screen, 30, 30, tile_size)
+    
     elif game.game_mode == "menu":
-        screen.fill((25, 0, 60))
+        menu.draw(screen, WIDTH, HEIGHT)
 
     # END DRAWING 
     game.frameUpdate()
